@@ -11,7 +11,14 @@ public class Tower : MonoBehaviour
     public float damage;
     public int price;
 
+    public float towerBallAmp = 0.02f;
+    public float towerBallBias = 0.01f;
+    public float towerBallSpeed = 3.0f;
+
     private float leftAttackTime;
+
+    private Transform towerBall;
+    private Vector3 towerBallLocalPositionOffset;
 
     public static Tower BuyTowerOrNull(int level)
     {
@@ -39,6 +46,8 @@ public class Tower : MonoBehaviour
     private void Awake()
     {
         leftAttackTime = 1.0f / attackFrequency;
+        towerBall = transform.Find("TowerBall");
+        towerBallLocalPositionOffset = towerBall.localPosition;
     }
 
     private void Start()
@@ -57,6 +66,14 @@ public class Tower : MonoBehaviour
             while (leftAttackTime <= 0.0f)
                 leftAttackTime += (1.0f / attackFrequency);
         }
+
+        VibTowerBall();
+    }
+
+    private void VibTowerBall()
+    {
+        float y = Mathf.Sin(Time.time * towerBallSpeed) * towerBallAmp + towerBallBias;
+        towerBall.localPosition = towerBallLocalPositionOffset + new Vector3(0.0f, y, 0.0f);
     }
 
     private void ShootBullet()
@@ -108,9 +125,6 @@ public class Tower : MonoBehaviour
 
         direction = dir;
 
-        if (index == -1)
-            return false;
-        else
-            return true;
+        return index != -1;
     }
 }

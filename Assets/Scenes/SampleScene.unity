@@ -2930,6 +2930,36 @@ Transform:
   m_Father: {fileID: 2089148063}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1224212966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1224212967}
+  m_Layer: 0
+  m_Name: Point (59)
+  m_TagString: Untagged
+  m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1224212967
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224212966}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.439, y: 0.362, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2089148063}
+  m_RootOrder: 59
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1329361403
 GameObject:
   m_ObjectHideFlags: 0
@@ -3622,11 +3652,30 @@ MonoBehaviour:
   startMoney: 400
   autoMoneyTime: 3
   autoMoney: 1
+  pathManager: {fileID: 2089148064}
   ui_Lobby: {fileID: 1937989660}
   ui_Game: {fileID: 1528518426}
   ui_Result: {fileID: 993736814}
   bulletContainer: {fileID: 1937586977}
   enemyContainer: {fileID: 1098156968}
+  spawnPoints:
+  - spawnPointIndex: 0
+    spawnCooltime: 7
+    enemyPrefabs:
+    - {fileID: 4611143150132755307, guid: b457d3c9409295445a60fd1b7dc5c4df, type: 3}
+  - spawnPointIndex: 16
+    spawnCooltime: 7
+    enemyPrefabs:
+    - {fileID: 4611143150132755307, guid: b457d3c9409295445a60fd1b7dc5c4df, type: 3}
+  - spawnPointIndex: 53
+    spawnCooltime: 10
+    enemyPrefabs:
+    - {fileID: 4611143150132755307, guid: b457d3c9409295445a60fd1b7dc5c4df, type: 3}
+  - spawnPointIndex: 54
+    spawnCooltime: 10
+    enemyPrefabs:
+    - {fileID: 4611143150132755307, guid: b457d3c9409295445a60fd1b7dc5c4df, type: 3}
+  destroyPoints: []
 --- !u!1 &1594712251
 GameObject:
   m_ObjectHideFlags: 0
@@ -5251,6 +5300,7 @@ Transform:
   - {fileID: 2128249242}
   - {fileID: 522367292}
   - {fileID: 59384338}
+  - {fileID: 1224212967}
   m_Father: {fileID: 5112474}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5295,7 +5345,7 @@ MonoBehaviour:
     indexTo: 09000000
     pathColor: {r: 1, g: 0, b: 0, a: 1}
   - indexFrom: 9
-    indexTo: 0a000000
+    indexTo: 0a0000003b000000
     pathColor: {r: 1, g: 0, b: 0, a: 1}
   - indexFrom: 10
     indexTo: 0b000000
@@ -5438,6 +5488,9 @@ MonoBehaviour:
   - indexFrom: 58
     indexTo: 0c000000
     pathColor: {r: 0, g: 0, b: 1, a: 1}
+  - indexFrom: 59
+    indexTo: 2d000000
+    pathColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &2089275354
 GameObject:
   m_ObjectHideFlags: 0

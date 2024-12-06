@@ -199,6 +199,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 2
-  attackSpeed: 1.5
+  attackFrequency: 1.5
+  bulletSpeed: 6
   damage: 1
   price: 20
+  towerBallAmp: 0.02
+  towerBallBias: 0.01
+  towerBallSpeed: 3

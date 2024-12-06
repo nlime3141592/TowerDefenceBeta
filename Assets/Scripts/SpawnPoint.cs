@@ -5,8 +5,6 @@ using UnityEngine;
 [Serializable]
 public class SpawnPoint
 {
-    public bool shouldGenerate => leftSpawnCooltime <= 0;
-
     public int spawnPointIndex;
 
     public float spawnCooltime;
@@ -22,10 +20,12 @@ public class SpawnPoint
 
     public Enemy GenerateEnemyOrNull()
     {
-        if (enemyPrefabs == null || enemyPrefabs.Count == 0)
+        if (enemyPrefabs == null || enemyPrefabs.Count == 0 || leftSpawnCooltime > 0.0f)
             return null;
 
         System.Random prng = new System.Random();
+
+        leftSpawnCooltime = spawnCooltime;
 
         int index = prng.Next(enemyPrefabs.Count);
         return GameObject.Instantiate<Enemy>(enemyPrefabs[index]);

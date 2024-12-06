@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
         s_ui_Result = ui_Result;
 
         s_bulletContainer = bulletContainer;
+        s_enemyContainer = enemyContainer;
     }
 
     private void Start()
@@ -68,6 +69,8 @@ public class GameManager : MonoBehaviour
             FindTile();
             SelectTile();
             GetAutoMoney();
+            GenerateEnemy();
+            DestroyEnemy();
             s_playtime += Time.deltaTime;
         }
     }
@@ -156,10 +159,12 @@ public class GameManager : MonoBehaviour
         {
             SpawnPoint point = spawnPoints[i];
 
-            if (!point.shouldGenerate)
-                continue;
+            point.OnUpdate();
 
             Enemy genEnemy = point.GenerateEnemyOrNull();
+
+            if (genEnemy == null)
+                continue;
 
             genEnemy.pathManager = this.pathManager;
             genEnemy.pathTo = pathManager.GetNextIndex(point.spawnPointIndex);
@@ -168,5 +173,10 @@ public class GameManager : MonoBehaviour
             Vector3 position = pathManager.GetPosition(point.spawnPointIndex);
             genEnemy.transform.position = position;
         }
+    }
+
+    private void DestroyEnemy()
+    {
+
     }
 }

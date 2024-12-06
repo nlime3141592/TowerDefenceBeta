@@ -9,4 +9,9 @@ public class Bullet : MonoBehaviour
     public Vector3 direction;
     public float speed;
     public float damage;
+
+    private void FixedUpdate()
+    {
+        transform.position += direction * speed * Time.fixedDeltaTime;
+    }
 }
