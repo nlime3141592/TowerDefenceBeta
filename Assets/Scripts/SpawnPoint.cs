@@ -7,9 +7,7 @@ public class SpawnPoint
 {
     public int spawnPointIndex;
 
-    public float spawnCooltime;
-
-    public List<Enemy> enemyPrefabs;
+    public List<SpawnPointPhase> phases;
 
     private float leftSpawnCooltime;
 
@@ -20,14 +18,17 @@ public class SpawnPoint
 
     public Enemy GenerateEnemyOrNull()
     {
-        if (enemyPrefabs == null || enemyPrefabs.Count == 0 || leftSpawnCooltime > 0.0f)
+        if (leftSpawnCooltime > 0.0f)
             return null;
 
-        System.Random prng = new System.Random();
+        int idxPhase = GameManager.s_gamePhase - 1;
 
-        leftSpawnCooltime = spawnCooltime;
+        if (idxPhase >= phases.Count)
+            idxPhase = phases.Count - 1;
 
-        int index = prng.Next(enemyPrefabs.Count);
-        return GameObject.Instantiate<Enemy>(enemyPrefabs[index]);
+        SpawnPointPhase phase = phases[idxPhase];
+        leftSpawnCooltime = phase.spawnCooltime;
+
+        return phase.GenerateRandomEnemyOrNull();
     }
 }

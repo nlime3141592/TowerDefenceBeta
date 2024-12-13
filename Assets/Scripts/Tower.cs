@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Tower : MonoBehaviour
@@ -78,10 +76,9 @@ public class Tower : MonoBehaviour
 
     private void ShootBullet()
     {
-        Vector3 direction;
-        bool canShoot = TryGetBulletDirection(out direction);
+        Enemy nearestEnemy = GetNearestEnemyOrNull();
 
-        if (!canShoot)
+        if (nearestEnemy == null)
             return;
 
         GameObject obj_bullet = Resources.Load("Bullet") as GameObject;
@@ -94,12 +91,14 @@ public class Tower : MonoBehaviour
         position.z = -1.0f;
         bullet.transform.position = position;
 
-        bullet.direction = direction;
+        bullet.targetPosition = nearestEnemy.transform.position;
         bullet.speed = this.bulletSpeed;
         bullet.damage = this.damage;
+
+        nearestEnemy.Subscribe(bullet);
     }
 
-    private bool TryGetBulletDirection(out Vector3 direction)
+    private Enemy GetNearestEnemyOrNull()
     {
         Transform enemies = GameManager.s_enemyContainer;
 
@@ -107,7 +106,7 @@ public class Tower : MonoBehaviour
         float distance = float.MaxValue;
         int index = -1;
 
-        for (int i = 0; i <  enemies.childCount; ++i)
+        for (int i = 0; i < enemies.childCount; ++i)
         {
             Transform enemy = enemies.GetChild(i);
 
@@ -123,8 +122,9 @@ public class Tower : MonoBehaviour
             }
         }
 
-        direction = dir;
-
-        return index != -1;
+        if (index == -1)
+            return null;
+        else
+            return enemies.GetChild(index).GetComponent<Enemy>();
     }
 }

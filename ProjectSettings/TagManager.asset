@@ -41,3 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 2959765107
+    locked: 0
+  - name: StaticObject
+    uniqueID: 2269652641
+    locked: 0
+  - name: LivingEntity
+    uniqueID: 3401664771
+    locked: 0
+  - name: Bullet
+    uniqueID: 1013989933
+    locked: 0
