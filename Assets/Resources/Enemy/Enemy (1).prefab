@@ -76,12 +76,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f040072dcb9c6b49bcd0af7d24e4493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.45
-  health: 1
-  rewardMoney: 25
+  moveSpeed: 0.3
+  health: 3
+  rewardMoney: 5
   bodyAmp: 0.04
   bodyBias: 0
   bodySpeed: 2
+  destroyPoints: []
   pathManager: {fileID: 0}
   pathTo: 0
   direction: {x: 0, y: 0, z: 0}

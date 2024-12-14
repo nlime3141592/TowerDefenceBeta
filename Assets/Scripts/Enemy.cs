@@ -60,6 +60,7 @@ public class Enemy : MonoBehaviour
 
     private void VibBody()
     {
+        // Easing 기능-2 : Sin 함수의 진동을 활용하여 적 몸체의 디테일한 상하 이동을 구현했습니다.
         float y = Mathf.Sin(Time.time * bodySpeed) * bodyAmp + bodyBias;
         sprnd.transform.localPosition = new Vector3(0.0f, y, 0.0f);
     }

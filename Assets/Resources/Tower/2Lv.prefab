@@ -202,7 +202,8 @@ MonoBehaviour:
   attackFrequency: 1.5
   bulletSpeed: 6
   damage: 1
-  price: 20
+  price: 70
+  maxRecognizeDistance: 5.5
   towerBallAmp: 0.02
   towerBallBias: 0.01
   towerBallSpeed: 3

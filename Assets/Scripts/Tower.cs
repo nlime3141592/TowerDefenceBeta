@@ -8,6 +8,7 @@ public class Tower : MonoBehaviour
     public float bulletSpeed;
     public float damage;
     public int price;
+    public float maxRecognizeDistance = 1.0f;
 
     public float towerBallAmp = 0.02f;
     public float towerBallBias = 0.01f;
@@ -70,6 +71,7 @@ public class Tower : MonoBehaviour
 
     private void VibTowerBall()
     {
+        // Easing 기능-1 : Sin 함수의 진동을 활용하여 포탑 위 구체의 디테일한 상하 이동을 구현했습니다.
         float y = Mathf.Sin(Time.time * towerBallSpeed) * towerBallAmp + towerBallBias;
         towerBall.localPosition = towerBallLocalPositionOffset + new Vector3(0.0f, y, 0.0f);
     }
@@ -103,7 +105,7 @@ public class Tower : MonoBehaviour
         Transform enemies = GameManager.s_enemyContainer;
 
         Vector3 dir = Vector3.zero;
-        float distance = float.MaxValue;
+        float distance = maxRecognizeDistance;
         int index = -1;
 
         for (int i = 0; i < enemies.childCount; ++i)

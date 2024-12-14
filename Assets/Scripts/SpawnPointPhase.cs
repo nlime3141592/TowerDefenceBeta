@@ -6,16 +6,28 @@ using UnityEngine;
 public class SpawnPointPhase
 {
     public float spawnCooltime;
-    public List<Enemy> enemyPrefabs;
+    public List<SpawnRate> spawnRates;
 
     public Enemy GenerateRandomEnemyOrNull()
     {
-        if (enemyPrefabs == null || enemyPrefabs.Count == 0)
+        if (spawnRates == null || spawnRates.Count == 0)
             return null;
 
         System.Random prng = new System.Random();
-        int index = prng.Next(enemyPrefabs.Count);
+        int rateIndex = 0;
+        int rateSum = spawnRates[0].spawnRate;
 
-        return GameObject.Instantiate<Enemy>(enemyPrefabs[index]);
+        for (int i = 1; i < spawnRates.Count; ++i)
+        {
+            rateSum += spawnRates[i].spawnRate;
+
+            if (prng.Next(rateSum) < spawnRates[i].spawnRate)
+            {
+                rateIndex = i;
+            }
+        }
+
+        SpawnRate selectedSpawnRate = spawnRates[rateIndex];
+        return GameObject.Instantiate<Enemy>(selectedSpawnRate.enemyPrefab);
     }
 }

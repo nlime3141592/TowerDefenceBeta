@@ -76,9 +76,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f040072dcb9c6b49bcd0af7d24e4493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.45
-  health: 1
-  rewardMoney: 25
+  moveSpeed: 0.1
+  health: 15
+  rewardMoney: 20
   bodyAmp: 0.04
   bodyBias: 0.5
   bodySpeed: 2

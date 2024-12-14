@@ -22,9 +22,9 @@ public class Tile : MonoBehaviour
         if (havingTower == null)
         {
             if (isSelected)
-                rnd.color = Color.red;
+                rnd.color = Color.white;
             else
-                rnd.color = Color.black;
+                rnd.color = new Color(0.75f, 0.75f, 0.75f, 1.0f);
 
             rnd.enabled = true;
             col.size = new Vector3(0.7f, 0.25f, 0.2f);
